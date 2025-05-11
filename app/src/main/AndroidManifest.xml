@@ -13,6 +13,12 @@
         android:theme="@style/Theme.AGISProject"
         tools:targetApi="31">
         <activity
+            android:name=".AddAgenda"
+            android:exported="false" />
+        <activity
+            android:name=".ViewAgenda"
+            android:exported="false" />
+        <activity
             android:name=".DirectPage"
             android:exported="false" />
         <activity

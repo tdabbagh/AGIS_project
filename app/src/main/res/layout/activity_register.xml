@@ -124,11 +124,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.735" />
 
-    <EditText
-        android:id="@+id/register_role"
+    <Spinner
+        android:id="@+id/spinner_role"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:hint="Enter Your Role"
+        android:spinnerMode="dropdown"
+        android:entries="@array/roles"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -40,7 +41,7 @@ public class Register extends AppCompatActivity {
     EditText name = (EditText) findViewById(R.id.register_name);
     EditText email = (EditText) findViewById(R.id.register_email);
     EditText password = (EditText) findViewById(R.id.register_password);
-    EditText role = (EditText) findViewById(R.id.register_role);
+    Spinner role = (Spinner) findViewById(R.id.spinner_role);
 
     reg.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -49,7 +50,7 @@ public class Register extends AppCompatActivity {
             if(name.getText().toString().isEmpty() ||
                     email.getText().toString().isEmpty() ||
                     password.getText().toString().isEmpty() ||
-                    role.getText().toString().isEmpty())
+                    role.getSelectedItem().toString().isEmpty())
             {
                 Toast.makeText(Register.this,"Empty fields are required!", Toast.LENGTH_LONG).show();
             }
@@ -58,7 +59,7 @@ public class Register extends AppCompatActivity {
                 name_value = name.getText().toString();
                 email_value = email.getText().toString();
                 pass_value = password.getText().toString();
-                role_value = role.getText().toString();
+                role_value = role.getSelectedItem().toString();
                 addUser(name_value, email_value, pass_value, role_value);
 
             }
