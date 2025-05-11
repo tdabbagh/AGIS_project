@@ -75,7 +75,7 @@ public class Register extends AppCompatActivity {
                             Toast.makeText(Register.this,"Successful Registration" + user.getEmail()+" is now added to the AGI's chatting application",Toast.LENGTH_LONG).show();
                         }
                         else{
-                            Toast.makeText(Register.this,"User already exists",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Register.this,"User already exist",Toast.LENGTH_LONG).show();
                         }
                     }
                 });
