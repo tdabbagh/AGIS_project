@@ -23,15 +23,7 @@
             android:contentDescription="AGI Logo"
             android:src="@drawable/agislogo" />
 
-        <!-- com.example.agisproject.Profile Picture -->
-        <ImageView
-            android:id="@+id/profilePic"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginBottom="12dp"
-            android:background="@drawable/ic_launcher_background"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_foreground" />
+
 
         <!-- Name -->
         <TextView
@@ -53,32 +45,6 @@
             android:textColor="@color/white"
             android:textSize="19dp"
             android:textStyle="bold" />
-
-        <!-- Followers / Following -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="85dp"
-                android:text="0 Followers"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="0 Following"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-        </LinearLayout>
 
 
         <!-- Bio Card -->
@@ -133,7 +99,7 @@
             android:text="Edit Profile"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="48dp"
             android:backgroundTint="#6200EE"
             android:layout_gravity="center"
             android:textColor="@color/white"/>
