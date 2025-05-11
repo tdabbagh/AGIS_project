@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.google.firebase.firestore.FirebaseFirestore;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +20,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Register extends AppCompatActivity {
 
@@ -59,7 +62,7 @@ public class Register extends AppCompatActivity {
                 addUser(name_value, email_value, pass_value, role_value);
 
             }
-            startActivity(new Intent(Register.this, Login2.class));
+
         }
     });
     }
@@ -72,10 +75,33 @@ public class Register extends AppCompatActivity {
 
                         if(task.isSuccessful()){
                             user = mAuth.getCurrentUser();
-                            Toast.makeText(Register.this,"Successful Registration" + user.getEmail()+" is now added to the AGI's chatting application",Toast.LENGTH_LONG).show();
+                            String uid = user.getUid();
+
+                            // Store extra user info in Firestore
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            Map<String, Object> userInfo = new HashMap<>();
+                            userInfo.put("name", user_name);
+                            userInfo.put("email", user_email);
+                            userInfo.put("role", user_role);
+
+                            db.collection("Users").document(uid)
+                                    .set(userInfo)
+                                    .addOnSuccessListener(aVoid -> {
+                                        Toast.makeText(Register.this,
+                                                "User added to AGIS Chat: " + user_email,
+                                                Toast.LENGTH_LONG).show();
+
+                                        startActivity(new Intent(Register.this, Login2.class));
+                                        finish();
+
+                                        })
+                                    .addOnFailureListener(e -> {
+                                        Toast.makeText(Register.this, "User registered but failed to save role: " + e.getMessage(),
+                                                Toast.LENGTH_LONG).show();
+                                    });
                         }
                         else{
-                            Toast.makeText(Register.this,"User already exist",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Register.this, "User already exists!", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
